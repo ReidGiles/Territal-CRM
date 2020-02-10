@@ -35,7 +35,7 @@ ul {
 
   #page1
   {
-      height: 100vh;;
+      height: 100vh;
   }
 
   #navLogo
@@ -78,6 +78,21 @@ ul {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
     text-align: center;
+  }
+
+  .homeIcons
+  {
+      padding-top: 4vh;
+      padding-left: 10vh;
+      padding-right: 10vh;
+      height:20vh;
+      width: 20vh;
+  }
+
+  .homeCaption
+  {
+    padding-left: 13vh;
+    padding-right: 13vh;
+    font-size: 5vh;
   }
