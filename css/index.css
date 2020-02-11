@@ -35,7 +35,8 @@ ul {
 
   #page1
   {
-      height: 100vh;
+    position: relative;
+    height: 100vh;
   }
 
   #navLogo
@@ -69,9 +70,27 @@ ul {
     border: none;
     color: white;
     padding: 5px 30px;
+    margin-top: 8vh;
     text-align: center;
     font-size: 5vh;
     width: 40%;
+  }
+
+  #p2Banner
+  {
+    position: absolute;
+    height: 15vh;
+    width: 100vw;
+    bottom: 0;
+    background-color: #2D4057;
+  }
+
+  #p2Heading
+  {
+    color: white;
+    font-size: 4.5vh;
+    text-align: center;
+    padding-top: 4vh;
   }
 
   .center {
@@ -83,16 +102,23 @@ ul {
 
   .homeIcons
   {
-      padding-top: 4vh;
-      padding-left: 10vh;
-      padding-right: 10vh;
-      height:20vh;
-      width: 20vh;
+    height:20vh;
+    width: 20vh;
   }
 
-  .homeCaption
+  .item
   {
-    padding-left: 13vh;
-    padding-right: 13vh;
+    margin-left: 16.33vw;
+    margin-top: 2vh;
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
     font-size: 5vh;
+    width: 20vh;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .caption 
+  {
+    display: block;
   }
