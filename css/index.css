@@ -33,12 +33,6 @@ ul {
     background-color: #fa9483;
   }
 
-  #page1
-  {
-    position: relative;
-    height: 100vh;
-  }
-
   #navLogo
   {
       float: left;
@@ -81,7 +75,7 @@ ul {
     position: absolute;
     height: 15vh;
     width: 100vw;
-    bottom: 0;
+    top: 0;
     background-color: #2D4057;
   }
 
@@ -121,4 +115,10 @@ ul {
   .caption 
   {
     display: block;
+  }
+
+  .page
+  {
+    position: relative;
+    height: 100vh;
   }
