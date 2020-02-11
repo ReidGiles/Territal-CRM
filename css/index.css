@@ -72,8 +72,8 @@ ul {
 
   #p2Banner
   {
-    position: absolute;
-    height: 15vh;
+    position: relative;
+    height: 12vh;
     width: 100vw;
     top: 0;
     background-color: #2D4057;
@@ -83,8 +83,87 @@ ul {
   {
     color: white;
     font-size: 4.5vh;
+    font-weight: bold;
     text-align: center;
     padding-top: 4vh;
+  }
+
+  #productDescription
+  {
+    position: relative;
+    height: 30vh;
+    width: 38vw;
+    background: #f3deca;
+    margin-left: 7vw;
+    margin-top: 5vh;
+    float: left;
+  }
+
+  #productDescriptionHeader
+  {
+    height: 12vh;
+    width: 38vw;
+    background-color: #fa9483;
+  }
+
+  #productDescriptionTitle
+  {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4.5vh;
+    font-weight: bold;
+    color: white;    
+    margin-left: 1vw;
+    margin-top: 1.5vh;
+  }
+
+  #productDescriptionLogo
+  {
+      float: left;
+      height: 7vh;
+      width: 7vh;
+      background-color: grey;
+  }
+
+  #productDescriptionQuote
+  {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 2vh;
+    color: white;
+    margin-left: 0.5vw;
+    margin-top: 1.8vh;
+  }
+
+  #productFeaturesHeader
+  {
+    height: 8vh;
+    width: 38vw;
+    background-color: #4097aa;
+  }
+
+  #productFeaturesTitle
+  {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4.5vh;
+    font-weight: bold;
+    color: white;    
+    margin-top: 1.5vh;
+    width: 38vw;
+    text-align: center;
+  }
+
+  #productFeatures
+  {
+    position: relative;
+    height: 60vh;
+    width: 38vw;
+    background: #f3deca;
+    margin-right: 7vw;
+    margin-top: 5vh;
+    float: right;
   }
 
   .center {
