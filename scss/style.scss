@@ -1,0 +1,20 @@
+$body-bg-color: #ECECEC;
+$header-bg-color: #2D4057;
+$card-bg-color-o: #FA9483;
+$card-bg-color-g: #4097AA;
+$container-bg-color: #FFF;
+$container-shadow: 2px 2px 4px 0 rgba(0,0,0,0.15);
+
+body
+{
+    background-color: $header-bg-color;
+}
+.container
+{
+    background-color: $card-bg-color-o;
+    box-shadow: $container-shadow;
+}
+/*button
+{
+    background-color: $card-bg-color-o;
+}*/
