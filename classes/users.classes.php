@@ -3,9 +3,9 @@ class users
 {
 	protected $db = null;
 
-        public function __construct($db){
-			$this->db = $db;
-		}
+	public function __construct($db){
+		$this->db = $db;
+	}
 
 	public function checkUser($email, $password){
 		//lets get user

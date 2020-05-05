@@ -22,8 +22,7 @@ CREATE TABLE Tenants
     TenantForename VARCHAR(255),
     TenantSurname VARCHAR(255),
     TenantGender TEXT,
-    TenantAge TEXT,
-    TenantAddress TEXT,
+    TenantAge INT(3),
     CONSTRAINT Tenants_pk_index PRIMARY KEY (TenantID),
     CONSTRAINT Tenants_UserID_fk_index FOREIGN KEY (UserID) REFERENCES Users (UserID)
 );
@@ -38,3 +37,11 @@ CREATE TABLE Properties
     CONSTRAINT Properties_TenantID_fk_index FOREIGN KEY (TenantID) REFERENCES Tenants (TenantID),
     CONSTRAINT Properties_UserID_fk_index FOREIGN KEY (UserID) REFERENCES Users (UserID)
 );
+
+--INSERT INTO Tenants (UserID, TenantForename, TenantSurname, TenantGender, TenantAge)
+--VALUES (1, "George", "Chapman", "Male", 24),
+--       (1, "Jon", "Snow", "Male", 19);
+
+--INSERT INTO Properties (TenantID, UserID, PropertyAddress, PropertyRent)
+--VALUES (1, 1, "51  Annfield Rd", 600),
+--       (2, 1, "21  St Denys Road", 820);

@@ -1,13 +1,37 @@
 body {
-  background-color: #2D4057; }
+  background-color: #ECECEC; }
 
 .container {
   background-color: #FA9483;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.15); }
 
-/*button
-{
-    background-color: $card-bg-color-o;
-}*/
+.pageHeader {
+  background-color: #2D4057;
+  height: 100px;
+  font-size: 60px;
+  color: #ECECEC;
+  padding-left: 50px; }
+
+.dashboardCardData {
+  background-color: #ECECEC;
+  margin-bottom: 10px; }
+
+table.table-hover {
+  border: 2px solid #FA9483;
+  margin-top: 20px; }
+
+table.table-hover > thead > tr > th {
+  border: 2px solid #FA9483; }
+
+table.table-hover > tbody > tr > td {
+  border: 2px solid #FA9483; }
+
+#propertyCard {
+  float: right;
+  margin-right: 30px; }
+
+#clientCard {
+  float: right;
+  margin-right: 30px; }
 
 /*# sourceMappingURL=style.css.map */

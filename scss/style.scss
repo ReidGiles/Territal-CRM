@@ -7,14 +7,46 @@ $container-shadow: 2px 2px 4px 0 rgba(0,0,0,0.15);
 
 body
 {
-    background-color: $header-bg-color;
+    background-color: $body-bg-color;
 }
 .container
 {
     background-color: $card-bg-color-o;
     box-shadow: $container-shadow;
 }
-/*button
+.pageHeader
 {
-    background-color: $card-bg-color-o;
-}*/
+    background-color: $header-bg-color;
+    height: 100px;
+    font-size: 60px;
+    color: $body-bg-color;
+    padding-left: 50px;
+}
+.dashboardCardData
+{
+    background-color: $body-bg-color;
+    margin-bottom: 10px;
+}
+
+// https://stackoverflow.com/questions/41646011/how-to-change-the-border-color-of-bootstrap-table-using-inline-css
+table.table-hover{
+    border:2px solid $card-bg-color-o;
+    margin-top:20px;
+  }
+table.table-hover > thead > tr > th{
+    border:2px solid $card-bg-color-o;
+}
+table.table-hover > tbody > tr > td{
+    border:2px solid $card-bg-color-o;
+}
+
+#propertyCard
+{
+    float: right;
+    margin-right: 30px;
+}
+#clientCard
+{
+    float: right;
+    margin-right: 30px;
+}
