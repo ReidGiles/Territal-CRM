@@ -29,6 +29,12 @@
                     <a class="nav-link" href="index.php?p=dashboard">Dashboard<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="index.php?p=addProperty">New Property</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?p=addTenant">New Tenant</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="index.php?p=editprofile">Edit Profile</a>
                 </li>
             <?php } }else{ ?>

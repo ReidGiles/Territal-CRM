@@ -7,6 +7,11 @@
 		exit;
 	}
 ?>
+
+<div class="pageHeader">
+User Profile
+</div>
+
 <div class="container card mt-5">
     <div class="card-body">
         <h1>Edit your profile</h1>

@@ -1,5 +1,12 @@
 <div class="pageHeader">
     <?php 
+        if(!$_SESSION['loggedin'])
+        {
+            //User is not logged in
+            echo "<h1>Access Denied</h1>";
+            echo "<script> window.location.assign('index.php?p=login'); </script>";
+            exit;
+        }
         //Include users class
         require_once('classes/users.classes.php');
         $userObj = new users($DBH); //Lets pass through our DB connection
@@ -29,14 +36,13 @@
             </thead>
             <tbody>
             <?php
-            //Include users class
             require_once('classes/properties.classes.php');
             require_once('classes/tenants.classes.php');
             $propertyObj = new properties($DBH);
             $tenantObj = new tenants($DBH);
-            $properties = $propertyObj->getProperties();
+            $properties = $propertyObj->getProperties($_SESSION['userData']['UserID']);
             foreach ($properties as &$property) {
-                $tenant = $tenantObj->getTenant($property['TenantID']);
+                $tenant = $tenantObj->getTenant($_SESSION['userData']['UserID'], $property['TenantID']);
                 echo "<tr>";
                 echo "<td>" . $property['PropertyAddress'] . "</td>";
                 echo "<td>" . $tenant['TenantForename'] . " " . $tenant['TenantSurname'] . "</td>";
@@ -66,13 +72,19 @@
             require_once('classes/tenants.classes.php');
             $tenantObj = new tenants($DBH);
             $propertyObj = new properties($DBH);
-            $tenants = $tenantObj->getTenants();
+            $tenants = $tenantObj->getTenants($_SESSION['userData']['UserID']);
             foreach ($tenants as &$tenant) {
-                $property = $propertyObj->getProperty($tenant['TenantID']);
+                $property = $propertyObj->getProperty($_SESSION['userData']['UserID'], $tenant['TenantID']);
                 echo "<tr>";
                 echo "<td>" . $tenant['TenantForename'] . " " . $tenant['TenantSurname'] . "</td>";
-                echo "<td>" . $property['PropertyAddress'] . "</td>";
-                echo "<td>" . "£" . $property['PropertyRent'] . "</td>";
+                if (isset($property['PropertyAddress'])){
+                    echo "<td>" . $property['PropertyAddress'] . "</td>";
+                }
+                else echo "<td>No property on record</td>";
+                if (isset($property['PropertyRent'])){
+                    echo "<td>" . "£" . $property['PropertyRent'] . "</td>";
+                }
+                else echo "<td>£0</td>";
                 echo "</tr>";
             }
             ?>
