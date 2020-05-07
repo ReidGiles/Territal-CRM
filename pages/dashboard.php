@@ -45,7 +45,10 @@
                 $tenant = $tenantObj->getTenant($_SESSION['userData']['UserID'], $property['TenantID']);
                 echo "<tr>";
                 echo "<td>" . $property['PropertyAddress'] . "</td>";
-                echo "<td>" . $tenant['TenantForename'] . " " . $tenant['TenantSurname'] . "</td>";
+                if ($tenant){
+                    echo "<td>" . $tenant['TenantForename'] . " " . $tenant['TenantSurname'] . "</td>";
+                }
+                else echo "<td>No tenant on record</td>";
                 echo "<td>" . "£" . $property['PropertyRent'] . "</td>";
                 echo "</tr>";
             }
@@ -68,13 +71,12 @@
             </thead>
             <tbody>
             <?php
-            //Include users class
             require_once('classes/tenants.classes.php');
             $tenantObj = new tenants($DBH);
             $propertyObj = new properties($DBH);
             $tenants = $tenantObj->getTenants($_SESSION['userData']['UserID']);
             foreach ($tenants as &$tenant) {
-                $property = $propertyObj->getProperty($_SESSION['userData']['UserID'], $tenant['TenantID']);
+                $property = $propertyObj->getPropertyByTenant($_SESSION['userData']['UserID'], $tenant['TenantID']);
                 echo "<tr>";
                 echo "<td>" . $tenant['TenantForename'] . " " . $tenant['TenantSurname'] . "</td>";
                 if (isset($property['PropertyAddress'])){
