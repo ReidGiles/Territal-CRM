@@ -44,12 +44,13 @@
             foreach ($properties as &$property) {
                 $tenant = $tenantObj->getTenant($_SESSION['userData']['UserID'], $property['TenantID']);
                 echo "<tr>";
-                echo "<td>" . $property['PropertyAddress'] . "</td>";
+                echo "<td><a href='index.php?p=editProperty&propertyID=" . $property['PropertyID'] . "'" . '>' . $property['PropertyAddress'] . "</a></td>";
+                
                 if ($tenant){
-                    echo "<td>" . $tenant['TenantForename'] . " " . $tenant['TenantSurname'] . "</td>";
+                    echo "<td><a href='index.php?p=editProperty&propertyID=" . $property['PropertyID'] . "'" . '>' . $tenant['TenantForename'] . " " . $tenant['TenantSurname'] . "</a></td>";
                 }
-                else echo "<td>No tenant on record</td>";
-                echo "<td>" . "£" . $property['PropertyRent'] . "</td>";
+                else echo "<td><a href='index.php?p=editProperty&propertyID=" . $property['PropertyID'] . "'" . '>' . "No tenant on record</a></td>";
+                echo "<td><a href='index.php?p=editProperty&propertyID=" . $property['PropertyID'] . "'" . '>' . "£" . $property['PropertyRent'] . "</a></td>";
                 echo "</tr>";
             }
             ?>

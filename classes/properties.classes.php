@@ -77,5 +77,26 @@ class properties
 			return false;
 		}
     }
+
+    public function updateProperty($userID, $address, $rent, $tenantID, $propertyID)
+    {
+        $query = "UPDATE Properties SET TenantID = :tenantID, UserID = :userID, PropertyAddress = :propertyAddress, PropertyRent = :rent WHERE PropertyID = :propertyID";
+        $pdo = $this->db->prepare($query);
+        $pdo->bindParam(':userID', $userID);
+        $pdo->bindParam(':propertyAddress', $address);
+        $pdo->bindParam(':rent', $rent);
+        $pdo->bindParam(':tenantID', $tenantID);
+        $pdo->bindParam(':propertyID', $propertyID);
+
+        if($pdo->execute())
+		{
+			return true;
+		}
+		else
+		{
+			$pdo->error_log();
+			return false;
+		}
+    }
 }
 ?>

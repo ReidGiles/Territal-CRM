@@ -34,4 +34,12 @@ table.table-hover > tbody > tr > td {
   float: right;
   margin-right: 30px; }
 
+td a {
+  display: block;
+  color: black;
+  text-decoration: none !important; }
+
+td a:hover {
+  color: black; }
+
 /*# sourceMappingURL=style.css.map */

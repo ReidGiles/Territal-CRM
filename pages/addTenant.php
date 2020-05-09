@@ -22,13 +22,11 @@ Add New Tenant
         <p>Complete the form below to add a new tenant.</p>
 
         <?php   
-            //Include users class
             require_once('classes/tenants.classes.php');
-            $tenantObj = new tenants($DBH); //Lets pass through our DB connection
+            $tenantObj = new tenants($DBH);
 
             if(isset($_POST['submit']))
             {
-                //Upload Image Here
 
                 $addNewTenant = $tenantObj->addTenant($_SESSION['userData']['UserID'], $_POST['forename'], $_POST['surname'], $_POST['gender'], $_POST['age']);
 

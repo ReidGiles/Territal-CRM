@@ -6,6 +6,8 @@
 		echo "<script> window.location.assign('index.php?p=login'); </script>";
 		exit;
     }
+    require_once('classes/properties.classes.php');
+    $propertyObj = new properties($DBH);
 ?>
 
 <div class="pageHeader">
@@ -17,11 +19,7 @@ Add New Property
         <h1>Add a new rental property</h1>
         <p>Complete the form below to add a new property.</p>
 
-        <?php   
-            //Include users class
-            require_once('classes/properties.classes.php');
-            $propertyObj = new properties($DBH); //Lets pass through our DB connection
-
+        <?php              
             if(isset($_POST['submit']))
             {
                 if ($_POST['tenant'] !== 'Unoccupied'){
