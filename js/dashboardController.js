@@ -6,16 +6,22 @@ angular.module('TerritalCRM', [])
         $scope.unoccupiedProperties = [];
         $scope.showOccupied = true;
         $scope.showUnoccupied = false;
-        $scope.propertySwitch;
+        $scope.propertySwitch = "occupied";
         $scope.filter = [];       
-        $scope.rentFilter;
+        $scope.rentFilter = "nolimit";
+        $scope.tenantFilter = "all";
 
         var populate = function(){
             $http.get("/Territal-CRM/ajax/getProperties.php").then(function (data, status, headers, config) {
                 angular.forEach(data.data, function (value, key) {
                     $scope.properties.push(value);
                     if (!value.TenantID){
-                        $scope.unoccupiedProperties.push(value);
+                        if ((value.PropertyRent < parseInt($scope.rentFilter)) && value.PropertyRent > (parseInt($scope.rentFilter)) - 250){
+                            $scope.unoccupiedProperties.push(value);
+                        }
+                        else if ($scope.rentFilter == "nolimit"){
+                            $scope.unoccupiedProperties.push(value);
+                        }
                     }
                 });
                 $http.get("/Territal-CRM/ajax/getTennants.php").then(function (data, status, headers, config) {
@@ -27,8 +33,27 @@ angular.module('TerritalCRM', [])
                         var property = value;
                         angular.forEach($scope.tenants, function (value, key) {
                             var tenant = value;
+
+                            
+
+
                             if (property.TenantID === tenant.TenantID){
-                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                if ((property.PropertyRent < parseInt($scope.rentFilter)) && property.PropertyRent > (parseInt($scope.rentFilter)) - 250){
+                                    if (property.TenantID == parseInt($scope.tenantFilter)){
+                                        $scope.propertyTenantLink.push({key: property, value: tenant});
+                                    }
+                                    else if ($scope.tenantFilter == "all"){
+                                        $scope.propertyTenantLink.push({key: property, value: tenant});
+                                    }
+                                }
+                                else if ($scope.rentFilter == "nolimit"){
+                                    if (property.TenantID == parseInt($scope.tenantFilter)){
+                                        $scope.propertyTenantLink.push({key: property, value: tenant});
+                                    }
+                                    else if ($scope.tenantFilter == "all"){
+                                        $scope.propertyTenantLink.push({key: property, value: tenant});
+                                    }
+                                }                               
                             }
                         });
                     });
@@ -64,7 +89,8 @@ angular.module('TerritalCRM', [])
 
         $scope.filterRent = function(){
             depopulate();
-            $http.get("/Territal-CRM/ajax/getProperties.php").then(function (data, status, headers, config) {
+            populate();
+            /*$http.get("/Territal-CRM/ajax/getProperties.php").then(function (data, status, headers, config) {
                 angular.forEach(data.data, function (value, key) {
                     $scope.properties.push(value);
                     if (!value.TenantID){
@@ -91,6 +117,39 @@ angular.module('TerritalCRM', [])
                         });
                     });
                 });
-            });
+            });*/
+        }
+
+        $scope.filterTenant = function(){
+            depopulate();
+            populate();
+            /*$http.get("/Territal-CRM/ajax/getProperties.php").then(function (data, status, headers, config) {
+                angular.forEach(data.data, function (value, key) {
+                    $scope.properties.push(value);
+                    if (!value.TenantID){
+                        $scope.unoccupiedProperties.push(value);
+                    }
+                });
+                $http.get("/Territal-CRM/ajax/getTennants.php").then(function (data, status, headers, config) {
+                    angular.forEach(data.data, function (value, key) {
+                        $scope.tenants.push(value);               
+                    });
+    
+                    angular.forEach($scope.properties, function (value, key) {
+                        var property = value;
+                        angular.forEach($scope.tenants, function (value, key) {
+                            var tenant = value;
+                            if ($scope.tenantFilter !== "all"){
+                                if ((property.TenantID === tenant.TenantID) && property.TenantID == parseInt($scope.tenantFilter)){
+                                    $scope.propertyTenantLink.push({key: property, value: tenant});
+                                }
+                            }
+                            else if ((property.TenantID === tenant.TenantID)){
+                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                            }
+                        });
+                    });
+                });
+            });*/
         }
     });

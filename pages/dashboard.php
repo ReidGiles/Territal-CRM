@@ -95,8 +95,8 @@
         </div>
         <div class="form-group">
             <label for="tenantFilter">Tenant:</label>
-            <select class="form-control" id="tenantFilter" name="tenantFilter">
-            <option>All</option>
+            <select ng-model="tenantFilter" ng-change="filterTenant()" ng-disabled="showUnoccupied" class="form-control" id="tenantFilter" name="tenantFilter">
+            <option value="all">All</option>
             <?php
                 $tenants = $tenantObj->getTenants($_SESSION['userData']['UserID']);
                 foreach ($tenants as &$tenant) {
@@ -104,14 +104,6 @@
                     echo '<option value="' . $tenantID . '">' . $tenant['TenantForename'] . ' ' . $tenant['TenantSurname'] . '</option>';
                 }
             ?>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="rentFilter">Address:</label>
-            <select class="form-control" id="rentFilter" name="rentFilter">
-                <option>All</option>
-                <option>0 - 499,999</option>
-                <option>500,000 - 999,999</option>
             </select>
         </div>
     </div>
