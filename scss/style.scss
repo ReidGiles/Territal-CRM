@@ -28,16 +28,29 @@ body
     margin-bottom: 10px;
 }
 
+.angularTest{
+    background-color: red;
+}
+
+#occupiedHeader{
+    width: max-content;
+}
+
+#filterCard{
+    width: 500px;
+    margin-left: 30px;
+}
+
 // https://stackoverflow.com/questions/41646011/how-to-change-the-border-color-of-bootstrap-table-using-inline-css
 table.table-hover{
-    border:2px solid $card-bg-color-o;
-    margin-top:20px;
+    border:1px solid $card-bg-color-o;
+    margin-bottom: auto;
   }
 table.table-hover > thead > tr > th{
-    border:2px solid $card-bg-color-o;
+    border:1px solid $card-bg-color-o;
 }
 table.table-hover > tbody > tr > td{
-    border:2px solid $card-bg-color-o;
+    border:1px solid $card-bg-color-o;
 }
 
 #propertyCard

@@ -16,15 +16,25 @@ body {
   background-color: #ECECEC;
   margin-bottom: 10px; }
 
+.angularTest {
+  background-color: red; }
+
+#occupiedHeader {
+  width: max-content; }
+
+#filterCard {
+  width: 500px;
+  margin-left: 30px; }
+
 table.table-hover {
-  border: 2px solid #FA9483;
-  margin-top: 20px; }
+  border: 1px solid #FA9483;
+  margin-bottom: auto; }
 
 table.table-hover > thead > tr > th {
-  border: 2px solid #FA9483; }
+  border: 1px solid #FA9483; }
 
 table.table-hover > tbody > tr > td {
-  border: 2px solid #FA9483; }
+  border: 1px solid #FA9483; }
 
 #propertyCard {
   float: right;
