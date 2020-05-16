@@ -16,7 +16,7 @@ angular.module('TerritalCRM', [])
                 angular.forEach(data.data, function (value, key) {
                     $scope.properties.push(value);
                     if (!value.TenantID){
-                        if ((value.PropertyRent < parseInt($scope.rentFilter)) && value.PropertyRent > (parseInt($scope.rentFilter)) - 250){
+                        if ((value.MonthlyRent < parseInt($scope.rentFilter)) && value.MonthlyRent > (parseInt($scope.rentFilter)) - 250){
                             $scope.unoccupiedProperties.push(value);
                         }
                         else if ($scope.rentFilter == "nolimit"){
@@ -38,7 +38,7 @@ angular.module('TerritalCRM', [])
 
 
                             if (property.TenantID === tenant.TenantID){
-                                if ((property.PropertyRent < parseInt($scope.rentFilter)) && property.PropertyRent > (parseInt($scope.rentFilter)) - 250){
+                                if ((property.MonthlyRent < parseInt($scope.rentFilter)) && property.MonthlyRent >= (parseInt($scope.rentFilter)) - 250){
                                     if (property.TenantID == parseInt($scope.tenantFilter)){
                                         $scope.propertyTenantLink.push({key: property, value: tenant});
                                     }

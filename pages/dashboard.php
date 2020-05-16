@@ -36,14 +36,18 @@
                 <tr>
                     <th>Address</th>
                     <th>Tenant</th>
+                    <th>Property Type</th>
+                    <th>Bedrooms</th>
                     <th>Monthly Rent</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="property in propertyTenantLink">
-                        <td><a href='index.php?p=editProperty&propertyID={{property.key.PropertyID}}'>{{property.key.PropertyAddress}}</a></td>
-                        <td><a href='index.php?p=editProperty&propertyID={{property.key.PropertyID}}'>{{property.value.TenantForename + " " + property.value.TenantSurname}}</a></td>                       
-                        <td><a href='index.php?p=editProperty&propertyID={{property.key.PropertyID}}'>{{property.key.PropertyRent}}</a></td>
+                        <td><a href='index.php?p=editProperty&propertyID={{property.key.PropertyID}}'>{{property.key.BuildingName_StreetNo + ' ' + property.key.Street + ', ' + property.key.City}}</a></td>
+                        <td><a href='index.php?p=editProperty&propertyID={{property.key.PropertyID}}'>{{property.value.FirstName + " " + property.value.LastName}}</a></td>
+                        <td><a href='index.php?p=editProperty&propertyID={{property.key.PropertyID}}'>{{property.key.PropertyType}}</a></td>                       
+                        <td><a href='index.php?p=editProperty&propertyID={{property.key.PropertyID}}'>{{property.key.Bedrooms}}</a></td>                       
+                        <td><a href='index.php?p=editProperty&propertyID={{property.key.PropertyID}}'>{{property.key.MonthlyRent}}</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -57,15 +61,17 @@
                 <thead>
                 <tr>
                     <th>Address</th>
-                    <th>Tenant</th>
+                    <th>Property Type</th>
+                    <th>Bedrooms</th>
                     <th>Monthly Rent</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="property in unoccupiedProperties">
-                        <td><a href='index.php?p=editProperty&propertyID={{property.PropertyID}}'>{{property.PropertyAddress}}</a></td>
-                        <td><a href='index.php?p=editProperty&propertyID={{property.PropertyID}}'>Currently Unoccupied</a></td>                       
-                        <td><a href='index.php?p=editProperty&propertyID={{property.PropertyID}}'>{{property.PropertyRent}}</a></td>
+                        <td><a href='index.php?p=editProperty&propertyID={{property.PropertyID}}'>{{property.BuildingName_StreetNo + ' ' + property.Street + ', ' + property.City}}</a></td>
+                        <td><a href='index.php?p=editProperty&propertyID={{property.PropertyID}}'>{{property.PropertyType}}</a></td>                       
+                        <td><a href='index.php?p=editProperty&propertyID={{property.PropertyID}}'>{{property.Bedrooms}}</a></td>
+                        <td><a href='index.php?p=editProperty&propertyID={{property.PropertyID}}'>{{property.MonthlyRent}}</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -90,7 +96,7 @@
                 <option value="1000">750 to 999</option>
                 <option value="1250">1000 to 1249</option>
                 <option value="1500">1250 to 1499</option>
-                <option value="2000">1500 to 1999</option>
+                <option value="1750">1500 to 1749</option>
             </select>
         </div>
         <div class="form-group">
@@ -101,7 +107,7 @@
                 $tenants = $tenantObj->getTenants($_SESSION['userData']['UserID']);
                 foreach ($tenants as &$tenant) {
                     $tenantID = $tenant['TenantID'];
-                    echo '<option value="' . $tenantID . '">' . $tenant['TenantForename'] . ' ' . $tenant['TenantSurname'] . '</option>';
+                    echo '<option value="' . $tenantID . '">' . $tenant['FirstName'] . ' ' . $tenant['LastName'] . '</option>';
                 }
             ?>
             </select>

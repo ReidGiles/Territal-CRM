@@ -23,9 +23,9 @@ Add New Property
             if(isset($_POST['submit']))
             {
                 if ($_POST['tenant'] !== 'Unoccupied'){
-                    $addNewProperty = $propertyObj->addPropertyWithTenant($_SESSION['userData']['UserID'], $_POST['address'], $_POST['rent'], $_POST['tenant']);
+                    $addNewProperty = $propertyObj->addPropertyWithTenant($_SESSION['userData']['UserID'], $_POST['buildingNameStreetNo'], $_POST['street'], $_POST['city'], $_POST['postcode'], $_POST['type'], $_POST['bedrooms'], $_POST['rent'], $_POST['tenant']);
                 }
-                else $addNewProperty = $propertyObj->addPropertyWithoutTenant($_SESSION['userData']['UserID'], $_POST['address'], $_POST['rent']);
+                else $addNewProperty = $propertyObj->addPropertyWithoutTenant($_SESSION['userData']['UserID'], $_POST['buildingNameStreetNo'], $_POST['street'], $_POST['city'], $_POST['postcode'], $_POST['type'], $_POST['bedrooms'], $_POST['rent']);
 
                 if($addNewProperty)
                 {
@@ -36,8 +36,28 @@ Add New Property
  
         <form method="post" action="" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="address">Property Address</label>
-                <input type="text" class="form-control" id="address" name="address">
+                <label for="address">Building Name / Street Number</label>
+                <input type="text" class="form-control" id="buildingNameStreetNo" name="buildingNameStreetNo">
+            </div>
+            <div class="form-group">
+                <label for="address">Street</label>
+                <input type="text" class="form-control" id="street" name="street">
+            </div>
+            <div class="form-group">
+                <label for="address">City</label>
+                <input type="text" class="form-control" id="city" name="city">
+            </div>
+            <div class="form-group">
+                <label for="address">Postcode</label>
+                <input type="text" class="form-control" id="postcode" name="postcode">
+            </div>
+            <div class="form-group">
+                <label for="rent">Property Type</label>
+                <input type="text" class="form-control" id="type" name="type">
+            </div>
+            <div class="form-group">
+                <label for="rent">Bedrooms</label>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms">
             </div>
             <div class="form-group">
                 <label for="rent">Monthly Rent</label>
@@ -53,7 +73,7 @@ Add New Property
                         $tenants = $tenantObj->getTenants($_SESSION['userData']['UserID']);
                         foreach ($tenants as &$tenant) {
                             $tenantID = $tenant['TenantID'];
-                            echo '<option value="' . $tenantID . '">' . $tenant['TenantForename'] . ' ' . $tenant['TenantSurname'] . '</option>';
+                            echo '<option value="' . $tenantID . '">' . $tenant['FirstName'] . ' ' . $tenant['LastName'] . '</option>';
                         }
                     ?>
                 </select>

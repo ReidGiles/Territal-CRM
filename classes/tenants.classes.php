@@ -28,13 +28,14 @@ class tenants
 		return $pdo->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function addTenant($userID, $forename, $surname, $gender, $age)
+    public function addTenant($userID, $forename, $mainPhone, $surname, $gender, $age)
     {
-        $query = "INSERT INTO Tenants (UserID, TenantForename, TenantSurname, TenantGender, TenantAge) VALUES (:userID, :forename, :surname, :gender, :age)";
+        $query = "INSERT INTO Tenants (UserID, FirstName, LastName, Main_Phone, Gender, Age) VALUES (:userID, :forename, :mainPhone, :surname, :gender, :age)";
         $pdo = $this->db->prepare($query);
         $pdo->bindParam(':userID', $userID);
         $pdo->bindParam(':forename', $forename);
         $pdo->bindParam(':surname', $surname);
+        $pdo->bindParam(':mainPhone', $mainPhone);
         $pdo->bindParam(':gender', $gender);
         $pdo->bindParam(':age', $age);
 

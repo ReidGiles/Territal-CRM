@@ -28,7 +28,7 @@ Add New Tenant
             if(isset($_POST['submit']))
             {
 
-                $addNewTenant = $tenantObj->addTenant($_SESSION['userData']['UserID'], $_POST['forename'], $_POST['surname'], $_POST['gender'], $_POST['age']);
+                $addNewTenant = $tenantObj->addTenant($_SESSION['userData']['UserID'], $_POST['forename'], $_POST['surname'], $_POST['mainPhone'], $_POST['gender'], $_POST['age']);
 
                 if($addNewTenant)
                 {
@@ -45,6 +45,10 @@ Add New Tenant
             <div class="form-group">
                 <label for="surname">Tenant Surname</label>
                 <input type="text" class="form-control" id="surname" name="surname">
+            </div>
+            <div class="form-group">
+                <label for="mainPhone">Main Phone</label>
+                <input type="number" class="form-control" id="mainPhone" name="mainPhone">
             </div>
             <div class="form-group">
                 <label for="gender">Tenant Gender</label>

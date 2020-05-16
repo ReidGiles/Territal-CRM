@@ -30,18 +30,38 @@ Edit Property
         <?php              
             if(isset($_POST['submit']))
             {
-                $adress = $_POST['address'];
+                $buildingNameStreetNo = $_POST['buildingNameStreetNo'];
+                $street = $_POST['street'];
+                $city = $_POST['city'];
+                $postcode = $_POST['postcode'];
+                $propertyType = $_POST['type'];
+                $bedrooms = $_POST['bedrooms'];
                 $rent = $_POST['rent'];
-                if (empty($adress)){
-                    $adress = $oldPropertyData['PropertyAddress'];
+                if (empty($buildingNameStreetNo)){
+                    $buildingNameStreetNo = $oldPropertyData['BuildingName_StreetNo'];
+                }
+                if (empty($street)){
+                    $street = $oldPropertyData['Street'];
+                }
+                if (empty($city)){
+                    $city = $oldPropertyData['City'];
+                }
+                if (empty($postcode)){
+                    $postcode = $oldPropertyData['Postcode'];
+                }
+                if (empty($propertyType)){
+                    $propertyType = $oldPropertyData['PropertyType'];
+                }
+                if (empty($bedrooms)){
+                    $bedrooms = $oldPropertyData['Bedrooms'];
                 }
                 if (empty($rent)){
-                    $rent = $oldPropertyData['PropertyRent'];
+                    $rent = $oldPropertyData['MonthlyRent'];
                 }
                 if ($_POST['tenant'] !== 'Unoccupied'){
-                    $addNewProperty = $propertyObj->updateProperty($_SESSION['userData']['UserID'], $adress, $rent, $_POST['tenant'], $propertyID);
+                    $addNewProperty = $propertyObj->updateProperty($_SESSION['userData']['UserID'], $buildingNameStreetNo, $street, $city, $postcode, $propertyType, $bedrooms, $rent, $_POST['tenant'], $propertyID);
                 }
-                else $addNewProperty = $propertyObj->updateProperty($_SESSION['userData']['UserID'], $adress, $rent, $oldPropertyData['TenantID'], $propertyID);
+                else $addNewProperty = $propertyObj->updateProperty($_SESSION['userData']['UserID'], $buildingNameStreetNo, $street, $city, $postcode, $propertyType, $bedrooms, $rent, $oldPropertyData['TenantID'], $propertyID);
 
                 if($addNewProperty)
                 {
@@ -49,15 +69,35 @@ Edit Property
                 }
             }
         ?>
- 
+
         <form method="post" action="" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="address">Property Address</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="<?php echo $oldPropertyData['PropertyAddress'] ?>">
+                <label for="address">Building Name / Street Number</label>
+                <input type="text" class="form-control" id="buildingNameStreetNo" name="buildingNameStreetNo" placeholder=<?php echo $oldPropertyData['BuildingName_StreetNo'] ?>>
+            </div>
+            <div class="form-group">
+                <label for="address">Street</label>
+                <input type="text" class="form-control" id="street" name="street" placeholder=<?php echo $oldPropertyData['Street'] ?>>
+            </div>
+            <div class="form-group">
+                <label for="address">City</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder=<?php echo $oldPropertyData['City'] ?>>
+            </div>
+            <div class="form-group">
+                <label for="address">Postcode</label>
+                <input type="text" class="form-control" id="postcode" name="postcode" placeholder=<?php echo $oldPropertyData['Postcode'] ?>>
+            </div>
+            <div class="form-group">
+                <label for="rent">Property Type</label>
+                <input type="text" class="form-control" id="type" name="type" placeholder=<?php echo $oldPropertyData['PropertyType'] ?>>
+            </div>
+            <div class="form-group">
+                <label for="rent">Bedrooms</label>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder=<?php echo $oldPropertyData['Bedrooms'] ?>>
             </div>
             <div class="form-group">
                 <label for="rent">Monthly Rent</label>
-                <input type="number" class="form-control" id="rent" name="rent" placeholder="<?php echo $oldPropertyData['PropertyRent'] ?>">
+                <input type="number" class="form-control" id="rent" name="rent" placeholder=<?php echo $oldPropertyData['MonthlyRent'] ?>>
             </div>
             <div class="form-group">
                 <label for="tenant">Assign Tenant:</label>
@@ -65,7 +105,7 @@ Edit Property
                     <?php
                         if ($oldTenantData)
                         {
-                            echo '<option value="' . $oldTenantData['TenantID'] . '">' . $oldTenantData['TenantForename'] . ' ' . $oldTenantData['TenantSurname'] . '</option>';
+                            echo '<option value="' . $oldTenantData['TenantID'] . '">' . $oldTenantData['FirstName'] . ' ' . $oldTenantData['LastName'] . '</option>';
                         }
                         else echo "<option>Currently unoccupied</option>"
                     ?>
@@ -73,15 +113,15 @@ Edit Property
                         $tenants = $tenantObj->getTenants($_SESSION['userData']['UserID']);
                         foreach ($tenants as &$tenant) {
                             $tenantID = $tenant['TenantID'];
-                            if ($oldTenantData['TenantForename'] . " " . $oldTenantData['TenantSurname'] !== $tenant['TenantForename'] . ' ' . $tenant['TenantSurname'])
+                            if ($oldTenantData['FirstName'] . " " . $oldTenantData['LastName'] !== $tenant['FirstName'] . ' ' . $tenant['LastName'])
                             {
-                                echo '<option value="' . $tenantID . '">' . $tenant['TenantForename'] . ' ' . $tenant['TenantSurname'] . '</option>';
+                                echo '<option value="' . $tenantID . '">' . $tenant['FirstName'] . ' ' . $tenant['LastName'] . '</option>';
                             }
                         }
                     ?>
                 </select>
             </div>
-            <button type="submit" name="submit" class="btn btn-default">Update Property</button>
+            <button type="submit" name="submit" class="btn btn-default">Add Property</button>
         </form>
     </div>
 </div>
