@@ -10,6 +10,8 @@ angular.module('TerritalCRM', [])
         $scope.filter = [];       
         $scope.rentFilter = "nolimit";
         $scope.tenantFilter = "all";
+        $scope.typeFilter = "any";
+        $scope.bedroomsFilter = "any";
 
         var populate = function(){
             $http.get("/Territal-CRM/ajax/getProperties.php").then(function (data, status, headers, config) {
@@ -32,28 +34,85 @@ angular.module('TerritalCRM', [])
                     angular.forEach($scope.properties, function (value, key) {
                         var property = value;
                         angular.forEach($scope.tenants, function (value, key) {
-                            var tenant = value;
-
-                            
-
+                            var tenant = value;                        
 
                             if (property.TenantID === tenant.TenantID){
                                 if ((property.MonthlyRent < parseInt($scope.rentFilter)) && property.MonthlyRent >= (parseInt($scope.rentFilter)) - 250){
                                     if (property.TenantID == parseInt($scope.tenantFilter)){
-                                        $scope.propertyTenantLink.push({key: property, value: tenant});
+                                        if (property.PropertyType == $scope.typeFilter){
+                                            if (property.Bedrooms == $scope.bedroomsFilter){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                            else if ($scope.bedroomsFilter == "any"){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                        }
+                                        else if ($scope.typeFilter == "any"){
+                                            if (property.Bedrooms == $scope.bedroomsFilter){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                            else if ($scope.bedroomsFilter == "any"){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                        }
                                     }
                                     else if ($scope.tenantFilter == "all"){
-                                        $scope.propertyTenantLink.push({key: property, value: tenant});
+                                        if (property.PropertyType == $scope.typeFilter){
+                                            if (property.Bedrooms == $scope.bedroomsFilter){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                            else if ($scope.bedroomsFilter == "any"){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                        }
+                                        else if ($scope.typeFilter == "any"){
+                                            if (property.Bedrooms == $scope.bedroomsFilter){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                            else if ($scope.bedroomsFilter == "any"){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                        }
                                     }
                                 }
                                 else if ($scope.rentFilter == "nolimit"){
                                     if (property.TenantID == parseInt($scope.tenantFilter)){
-                                        $scope.propertyTenantLink.push({key: property, value: tenant});
+                                        if (property.PropertyType == $scope.typeFilter){
+                                            if (property.Bedrooms == $scope.bedroomsFilter){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                            else if ($scope.bedroomsFilter == "any"){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                        }
+                                        else if ($scope.typeFilter == "any"){
+                                            if (property.Bedrooms == $scope.bedroomsFilter){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                            else if ($scope.bedroomsFilter == "any"){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                        }
                                     }
                                     else if ($scope.tenantFilter == "all"){
-                                        $scope.propertyTenantLink.push({key: property, value: tenant});
+                                        if (property.PropertyType == $scope.typeFilter){
+                                            if (property.Bedrooms == $scope.bedroomsFilter){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                            else if ($scope.bedroomsFilter == "any"){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                        }
+                                        else if ($scope.typeFilter == "any"){
+                                            if (property.Bedrooms == $scope.bedroomsFilter){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                            else if ($scope.bedroomsFilter == "any"){
+                                                $scope.propertyTenantLink.push({key: property, value: tenant});
+                                            }
+                                        }
                                     }
-                                }                               
+                                }                             
                             }
                         });
                     });
@@ -87,69 +146,8 @@ angular.module('TerritalCRM', [])
             }
         }
 
-        $scope.filterRent = function(){
+        $scope.repopulate = function(){
             depopulate();
             populate();
-            /*$http.get("/Territal-CRM/ajax/getProperties.php").then(function (data, status, headers, config) {
-                angular.forEach(data.data, function (value, key) {
-                    $scope.properties.push(value);
-                    if (!value.TenantID){
-                        $scope.unoccupiedProperties.push(value);
-                    }
-                });
-                $http.get("/Territal-CRM/ajax/getTennants.php").then(function (data, status, headers, config) {
-                    angular.forEach(data.data, function (value, key) {
-                        $scope.tenants.push(value);               
-                    });
-    
-                    angular.forEach($scope.properties, function (value, key) {
-                        var property = value;
-                        angular.forEach($scope.tenants, function (value, key) {
-                            var tenant = value;
-                            if ($scope.rentFilter !== "nolimit"){
-                                if ((property.TenantID === tenant.TenantID) && (property.PropertyRent < parseInt($scope.rentFilter)) && property.PropertyRent > (parseInt($scope.rentFilter)) - 250){
-                                    $scope.propertyTenantLink.push({key: property, value: tenant});
-                                }
-                            }
-                            else if ((property.TenantID === tenant.TenantID)){
-                                $scope.propertyTenantLink.push({key: property, value: tenant});
-                            }
-                        });
-                    });
-                });
-            });*/
-        }
-
-        $scope.filterTenant = function(){
-            depopulate();
-            populate();
-            /*$http.get("/Territal-CRM/ajax/getProperties.php").then(function (data, status, headers, config) {
-                angular.forEach(data.data, function (value, key) {
-                    $scope.properties.push(value);
-                    if (!value.TenantID){
-                        $scope.unoccupiedProperties.push(value);
-                    }
-                });
-                $http.get("/Territal-CRM/ajax/getTennants.php").then(function (data, status, headers, config) {
-                    angular.forEach(data.data, function (value, key) {
-                        $scope.tenants.push(value);               
-                    });
-    
-                    angular.forEach($scope.properties, function (value, key) {
-                        var property = value;
-                        angular.forEach($scope.tenants, function (value, key) {
-                            var tenant = value;
-                            if ($scope.tenantFilter !== "all"){
-                                if ((property.TenantID === tenant.TenantID) && property.TenantID == parseInt($scope.tenantFilter)){
-                                    $scope.propertyTenantLink.push({key: property, value: tenant});
-                                }
-                            }
-                            else if ((property.TenantID === tenant.TenantID)){
-                                $scope.propertyTenantLink.push({key: property, value: tenant});
-                            }
-                        });
-                    });
-                });
-            });*/
         }
     });

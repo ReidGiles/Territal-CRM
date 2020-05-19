@@ -89,7 +89,7 @@
         </div>
         <div class="form-group">
             <label for="rentFilter">Monthly Rent:</label>
-            <select ng-model="rentFilter" ng-change="filterRent()" class="form-control" id="rentFilter" name="rentFilter">
+            <select ng-model="rentFilter" ng-change="repopulate()" class="form-control" id="rentFilter" name="rentFilter">
                 <option value="nolimit">No limit</option>
                 <option value="500">Under 500</option>
                 <option value="750">500 to 749</option>
@@ -100,9 +100,31 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="TypeFilter">Property Type:</label>
+            <select ng-model="typeFilter" ng-change="repopulate()" class="form-control" id="TypeFilter" name="TypeFilter">
+                <option value="any">Any</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Studio">Studio</option>
+                <option value="House">House</option>
+                <option value="Bungalow">Bungalow</option>
+                <option value="Land">Land</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="BedroomsFilter">Bedrooms:</label>
+            <select ng-model="bedroomsFilter" ng-change="repopulate()" class="form-control" id="BedroomsFilter" name="BedroomsFilter">
+                <option value="any">Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="tenantFilter">Tenant:</label>
-            <select ng-model="tenantFilter" ng-change="filterTenant()" ng-disabled="showUnoccupied" class="form-control" id="tenantFilter" name="tenantFilter">
-            <option value="all">All</option>
+            <select ng-model="tenantFilter" ng-change="repopulate()" ng-disabled="showUnoccupied" class="form-control" id="tenantFilter" name="tenantFilter">
+            <option value="all">Any</option>
             <?php
                 $tenants = $tenantObj->getTenants($_SESSION['userData']['UserID']);
                 foreach ($tenants as &$tenant) {
