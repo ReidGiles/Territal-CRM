@@ -10,39 +10,61 @@ body {
   height: 100px;
   font-size: 60px;
   color: #ECECEC;
-  padding-left: 50px; }
+  padding-left: 70px;
+  position: fixed;
+  width: 100vw;
+  margin-top: 50px; }
 
 .dashboardCardData {
   background-color: #ECECEC;
   margin-bottom: 10px; }
 
-.angularTest {
-  background-color: red; }
+.navbar {
+  position: fixed;
+  width: 100vw;
+  top: 0; }
 
-#occupiedHeader {
-  width: max-content; }
+.tableTitle {
+  color: #2D4057; }
 
-#filterCard {
-  width: 500px;
-  margin-left: 30px; }
+.table-body {
+  margin-bottom: 10px; }
+
+.editCards {
+  float: left;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  max-height: 75vh;
+  top: 140px;
+  background-color: #4097AA; }
+
+.btn {
+  background-color: #FA9483; }
 
 table.table-hover {
-  border: 1px solid #FA9483;
+  border: 1px solid #4097AA;
   margin-bottom: auto; }
 
 table.table-hover > thead > tr > th {
-  border: 1px solid #FA9483; }
+  border: 1px solid #4097AA; }
 
 table.table-hover > tbody > tr > td {
-  border: 1px solid #FA9483; }
+  border: 1px solid #4097AA; }
 
-#propertyCard {
-  float: right;
-  margin-right: 30px; }
+#filterCard {
+  float: left;
+  width: 25vw;
+  margin-left: 4vw;
+  top: 140px;
+  position: fixed; }
 
 #clientCard {
   float: right;
-  margin-right: 30px; }
+  width: 60vw;
+  max-height: 75vh;
+  margin-right: 4vw;
+  top: 140px;
+  background-color: #4097AA; }
 
 td a {
   display: block;
@@ -51,5 +73,8 @@ td a {
 
 td a:hover {
   color: black; }
+
+.card-header {
+  color: #FFF; }
 
 /*# sourceMappingURL=style.css.map */

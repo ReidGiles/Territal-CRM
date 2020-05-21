@@ -16,7 +16,7 @@
 Add New Tenant
 </div>
 
-<div class="container card mt-5">
+<div class="container card mt-5 editCards overflow-auto">
     <div class="card-body">
         <h1>Add a new tenant</h1>
         <p>Complete the form below to add a new tenant.</p>

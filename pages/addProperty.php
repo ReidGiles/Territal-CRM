@@ -14,11 +14,12 @@
 Add New Property
 </div>
 
-<div class="container card mt-5">
-    <div class="card-body">
+<div class="container card mt-5 editCards overflow-auto">
+    <div class="card-header">
         <h1>Add a new rental property</h1>
-        <p>Complete the form below to add a new property.</p>
-
+        <h6>Complete the form below to add a new property.</h6>
+    </div>
+    <div class="card-body">      
         <?php              
             if(isset($_POST['submit']))
             {

@@ -30,15 +30,15 @@
 
     <div ng-show="showOccupied" id="clientCard" class="card container mt-5">
         <h1 id="occupiedHeader" class="card-header">Occupied Properties</h1>
-        <div class="card-body dashboardCardData">       
-            <table class="table table-hover">
+        <div class="card-body table-body overflow-auto">       
+            <table class="table table-hover table-striped dashboardCardData">
                 <thead>
                 <tr>
-                    <th>Address</th>
-                    <th>Tenant</th>
-                    <th>Property Type</th>
-                    <th>Bedrooms</th>
-                    <th>Monthly Rent</th>
+                    <th class="tableTitle">Address</th>
+                    <th class="tableTitle">Tenant</th>
+                    <th class="tableTitle">Property Type</th>
+                    <th class="tableTitle">Bedrooms</th>
+                    <th class="tableTitle">Monthly Rent</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,7 +57,7 @@
     <div ng-show="showUnoccupied" id="clientCard" class="card container mt-5">
         <h1 class="card-header">Inactive Properties</h1>
         <div class="card-body dashboardCardData">       
-            <table class="table table-hover">
+            <table class="table table-hover table-striped">
                 <thead>
                 <tr>
                     <th>Address</th>

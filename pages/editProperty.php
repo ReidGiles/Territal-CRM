@@ -23,7 +23,7 @@
 Edit Property
 </div>
 
-<div class="container card mt-5">
+<div class="container card mt-5 editCards overflow-auto">
     <div class="card-body">
         <h1>Edit Property</h1>
         <p>Complete the form below to update your property details.</p>
@@ -121,7 +121,7 @@ Edit Property
                     ?>
                 </select>
             </div>
-            <button type="submit" name="submit" class="btn btn-default">Add Property</button>
+            <button type="submit" name="submit" class="btn btn-default">Update Property</button>
         </form>
     </div>
 </div>

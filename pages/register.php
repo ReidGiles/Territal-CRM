@@ -50,7 +50,7 @@
     }
 ?>
 
-<div class="card container mt-5">
+<div class="container card mt-5 editCards overflow-auto">
     <div class="card-body">
         <h1 class="mb-3">Register</h1>
         <form action="index.php?p=register" method="post">
