@@ -17,11 +17,10 @@ Add New Tenant
 </div>
 
 <div class="container card mt-5 editCards overflow-auto">
-    <div class="card-header">
-        <h1>Add a new tenant</h1>
-        <h6>Complete the form below to add a new tenant.</h6>
-    </div>
     <div class="card-body">
+        <h1>Add a new tenant</h1>
+        <p>Complete the form below to add a new tenant.</p>
+
         <?php   
             require_once('classes/tenants.classes.php');
             $tenantObj = new tenants($DBH);

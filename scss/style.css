@@ -31,11 +31,10 @@ body {
   margin-bottom: 10px; }
 
 .editCards {
-  float: right;
-  max-width: 75vw;
+  float: left;
+  margin-left: 20vw;
+  margin-right: 20vw;
   max-height: 75vh;
-  margin-right: 12.5vw;
-  margin-left: 12.5vw;
   top: 140px;
   background-color: #4097AA; }
 

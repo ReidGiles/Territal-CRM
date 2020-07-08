@@ -9,7 +9,7 @@ class users
 
 	public function checkUser($email, $password){
 		//lets get user
-		$query = "SELECT * FROM Users WHERE UserEmail = :email";
+		$query = "SELECT * FROM users WHERE userEmail = :email";
 		$pdo = $this->db->prepare($query);
 		$pdo->bindParam(':email', $email);
 		$pdo->execute();
@@ -27,7 +27,7 @@ class users
 
 	public function getUser($userid){
 		//Let's get the users information
-		$query = "SELECT * FROM Users WHERE UserID = :userid";
+		$query = "SELECT * FROM users WHERE userID = :userid";
 		$pdo = $this->db->prepare($query);
 		$pdo->bindParam(':userid', $userid);
 		$pdo->execute();
@@ -82,11 +82,11 @@ class users
 
 		if(isset($target_file))
 		{
-			$query = "UPDATE Users SET UserForename = :forename, UserCountry = :country, UserGender = :gender, UserProfileImage = :profile_image WHERE userID = :userid";
+			$query = "UPDATE users SET UserForename = :forename, UserCountry = :country, UserGender = :gender, UserProfileImage = :profile_image WHERE userID = :userid";
 		}
 		else
 		{
-			$query = "UPDATE Users SET UserForename = :forename, UserCountry = :country, UserGender = :gender WHERE userID = :userid";
+			$query = "UPDATE users SET UserForename = :forename, UserCountry = :country, UserGender = :gender WHERE userID = :userid";
 		}
 		$pdo = $this->db->prepare($query);
 

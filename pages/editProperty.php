@@ -24,11 +24,9 @@ Edit Property
 </div>
 
 <div class="container card mt-5 editCards overflow-auto">
-    <div class="card-header">
-        <h1>Edit Property</h1>
-        <h6>Complete the form below to update your property details.</h6>
-    </div>
     <div class="card-body">
+        <h1>Edit Property</h1>
+        <p>Complete the form below to update your property details.</p>
         <?php              
             if(isset($_POST['submit']))
             {

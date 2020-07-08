@@ -23,7 +23,7 @@
             }
             else
             {
-                echo "Welcome. Please update user profile.";
+                echo "Welcome. Your user details are incomplete, please use 'Edit Profile' to update them.";
             }
         ?>
     </div>
