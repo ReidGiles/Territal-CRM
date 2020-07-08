@@ -13,11 +13,10 @@
             $error = "Please enter a valid email";
         }
         if(!$error){
-            //No errors - let’s create the account
             //Encrypt the password with a salt
             $encryptedPass = password_hash($_POST['password'], PASSWORD_DEFAULT);
             //Insert DB
-            $query = "INSERT INTO users (userEmail, userPassword) VALUES (:email, :password)";
+            $query = "INSERT INTO Users (UserEmail, UserPassword) VALUES (:email, :password)";
             $result = $DBH->prepare($query);
             $result->bindParam(':email', $_POST['email']);
             $result->bindParam(':password', $encryptedPass);

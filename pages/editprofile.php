@@ -13,12 +13,12 @@ User Profile
 </div>
 
 <div class="container card mt-5 editCards overflow-auto">
-    <div class="card-body">
+    <div class="card-header">
         <h1>Edit your profile</h1>
-        <p>Complete the form below to edit your profile.</p>
-
-        <?php
-    
+        <h6>Complete the form below to edit your profile.</h6>
+    </div>
+    <div class="card-body">
+        <?php  
             //Include users class
             require_once('classes/users.classes.php');
             $userObj = new users($DBH); //Lets pass through our DB connection

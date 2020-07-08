@@ -46,10 +46,11 @@ body
 }
 
 .editCards{
-    float: left;
-    margin-left: 20vw;
-    margin-right: 20vw;
+    float: right;
+    max-width:75vw;
     max-height: 75vh;
+    margin-right: 12.5vw;
+    margin-left: 12.5vw;
     top: 140px;
     background-color: $card-bg-color-g;
 }
