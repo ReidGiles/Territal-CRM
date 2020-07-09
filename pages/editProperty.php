@@ -30,7 +30,7 @@ Edit Property
     </div>
     <div class="card-body">
         <?php              
-            if(isset($_POST['submit']))
+            if(isset($_POST['update']))
             {
                 $buildingNameStreetNo = $_POST['buildingNameStreetNo'];
                 $street = $_POST['street'];
@@ -60,14 +60,24 @@ Edit Property
                 if (empty($rent)){
                     $rent = $oldPropertyData['MonthlyRent'];
                 }
-                if ($_POST['tenant'] !== 'Unoccupied'){
+                if ($_POST['tenant'] !== 'Currently unoccupied'){
                     $addNewProperty = $propertyObj->updateProperty($_SESSION['userData']['UserID'], $buildingNameStreetNo, $street, $city, $postcode, $propertyType, $bedrooms, $rent, $_POST['tenant'], $propertyID);
                 }
-                else $addNewProperty = $propertyObj->updateProperty($_SESSION['userData']['UserID'], $buildingNameStreetNo, $street, $city, $postcode, $propertyType, $bedrooms, $rent, $oldPropertyData['TenantID'], $propertyID);
+                else $addNewProperty = $propertyObj->updatePropertyWithoutTenant($_SESSION['userData']['UserID'], $buildingNameStreetNo, $street, $city, $postcode, $propertyType, $bedrooms, $rent, $propertyID);
 
                 if($addNewProperty)
                 {
                     echo '<div class="alert alert-success" role="alert">Your property has been updated!</div>';
+                }
+            }
+
+            if(isset($_POST['delete']))
+            {
+                $deleteProperty = $propertyObj->deleteProperty( $propertyID);
+
+                if($deleteProperty)
+                {
+                    echo '<div class="alert alert-success" role="alert">Your property has been deleted!</div>';
                 }
             }
         ?>
@@ -123,7 +133,8 @@ Edit Property
                     ?>
                 </select>
             </div>
-            <button type="submit" name="submit" class="btn btn-default">Update Property</button>
+            <button type="submit" name="update" class="btn btn-default">Update Property</button>
+            <button id="delete" type="submit" name="delete" class="btn btn-default">Delete Property</button>
         </form>
     </div>
 </div>

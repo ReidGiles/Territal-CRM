@@ -113,5 +113,47 @@ class properties
 			return false;
 		}
     }
+
+    public function updatePropertyWithoutTenant($userID, $buildingNameStreetNo, $street, $city, $postcode, $propertyType, $bedrooms, $monthlyRent, $propertyID)
+    {
+        $query = "UPDATE Properties SET UserID = :userID, BuildingName_StreetNo = :buildingNameStreetNo, Street = :street, City = :city, Postcode = :postcode, PropertyType = :propertyType, Bedrooms = :bedrooms, MonthlyRent = :monthlyRent WHERE PropertyID = :propertyID";
+        $pdo = $this->db->prepare($query);
+        $pdo->bindParam(':userID', $userID);
+        $pdo->bindParam(':buildingNameStreetNo', $buildingNameStreetNo);
+        $pdo->bindParam(':street', $street);
+        $pdo->bindParam(':city', $city);
+        $pdo->bindParam(':postcode', $postcode);
+        $pdo->bindParam(':propertyType', $propertyType);
+        $pdo->bindParam(':bedrooms', $bedrooms);
+        $pdo->bindParam(':monthlyRent', $monthlyRent);
+        $pdo->bindParam(':propertyID', $propertyID);
+
+        if($pdo->execute())
+		{
+			return true;
+		}
+		else
+		{
+			$pdo->error_log();
+			return false;
+		}
+    }
+
+    public function deleteProperty($propertyID)
+    {
+        $query = "DELETE FROM Properties WHERE PropertyID = :propertyID";
+        $pdo = $this->db->prepare($query);
+        $pdo->bindParam(':propertyID', $propertyID);
+
+        if($pdo->execute())
+		{
+			return true;
+		}
+		else
+		{
+			$pdo->error_log();
+			return false;
+		}
+    }
 }
 ?>

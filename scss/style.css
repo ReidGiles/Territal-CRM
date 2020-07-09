@@ -67,6 +67,9 @@ table.table-hover > tbody > tr > td {
   top: 140px;
   background-color: #4097AA; }
 
+#delete {
+  float: right; }
+
 td a {
   display: block;
   color: black;

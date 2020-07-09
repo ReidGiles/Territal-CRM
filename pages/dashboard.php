@@ -56,8 +56,8 @@
 
     <div ng-show="showUnoccupied" id="clientCard" class="card container mt-5">
         <h1 class="card-header">Inactive Properties</h1>
-        <div class="card-body dashboardCardData">       
-            <table class="table table-hover table-striped">
+        <div class="card-body table-body overflow-auto">       
+            <table class="table table-hover table-striped dashboardCardData">
                 <thead>
                 <tr>
                     <th>Address</th>
